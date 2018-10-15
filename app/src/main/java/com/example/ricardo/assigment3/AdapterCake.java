@@ -39,6 +39,10 @@ public class AdapterCake extends RecyclerView.Adapter<AdapterCake.ViewHolderItem
         Picasso.get().load(s.getImage()).fit().into((ImageView) viewHolderItem.mImg);
     }
 
+    void setWords(List<Cake> cakes){
+        data = cakes;
+        notifyDataSetChanged();
+    }
     @Override
     public int getItemCount() {
         return data.size();
