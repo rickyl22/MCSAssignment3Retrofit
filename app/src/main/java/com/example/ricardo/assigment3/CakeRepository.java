@@ -27,7 +27,7 @@ public class CakeRepository {
         }
         public CakeRepository()
         {
-            System.out.println("well oh boy");
+            
             cakeAPI = new Retrofit.Builder()
                     .baseUrl(CakeAPI.BASE_URL)
                     //.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -37,7 +37,7 @@ public class CakeRepository {
         public LiveData<List<Cake>> getCakes()
         {
             final MutableLiveData<List<Cake>> data = new MutableLiveData<>();
-            System.out.println("omggggggggggggggggggggggggg");
+
             cakeAPI.getCakes()
                     .enqueue(new Callback<List<Cake>>()
                     {
@@ -45,14 +45,14 @@ public class CakeRepository {
                         public void onResponse(Call<List<Cake>> call, Response<List<Cake>> response)
                         {
 
-                            System.out.println("seriously");
+
                                 data.setValue(response.body());
 
                         }
 
                         @Override
                         public void onFailure(Call<List<Cake>> call, Throwable t) {
-                            System.out.println("well fuck again");
+
                             data.setValue(null);
                         }
                     });
@@ -61,7 +61,7 @@ public class CakeRepository {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("sooooooooooooo well fuck again");
+
             return data;
         }
 
