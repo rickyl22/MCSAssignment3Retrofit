@@ -28,8 +28,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recycler;
-    CompositeDisposable mCom;
-    ArrayList<Cake> datos;
     CakeViewModel mCakeViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,35 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setWords(cakes);
             }
         });
-        /*
-        mCom = new CompositeDisposable();
-        recycler = (RecyclerView) findViewById(R.id.recycler_cake);
-        recycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        datos = new ArrayList<Cake>();
-        CakeAPI retrofit = new Retrofit.Builder()
-                .baseUrl(CakeAPI.BASE_URL)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build().create(CakeAPI.class);
-        mCom.add(retrofit.getCakes()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(this::handleResponse,this::handleError));
 
-
-    }
-    private void handleResponse(List<Cake> cake){
-
-        datos = new ArrayList<>(cake);
-        AdapterCake adapter = new AdapterCake(datos);
-        recycler.setAdapter(adapter);
-
-
-    }
-
-    private void handleError(Throwable error) {
-
-        Toast.makeText(this, "Error "+error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-    }*/
     }
 }
